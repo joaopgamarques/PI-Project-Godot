@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://di0tudswsnmih"]
+
+[ext_resource type="Script" path="res://scenes/ship.gd" id="1_pusgp"]
+[ext_resource type="PackedScene" uid="uid://dyfa2rlo2n1xf" path="res://scenes/ship_laser.tscn" id="2_so1eu"]
+[ext_resource type="Texture2D" uid="uid://cdewdglc7lblt" path="res://graphics/ship/playerShip1_blue.png" id="2_vd8gc"]
+[ext_resource type="AudioStream" uid="uid://ddge0kbqnkwb7" path="res://audio/explosion.wav" id="3_ihn8x"]
+[ext_resource type="AudioStream" uid="uid://bgu76ysx82j2w" path="res://audio/damage.ogg" id="4_3bpy3"]
+[ext_resource type="AudioStream" uid="uid://8bbvmvh6lik0" path="res://audio/laser.wav" id="6_e0sdd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvsqo"]
+radius = 48.0
+height = 100.0
+
+[node name="Ship" type="Area2D"]
+collision_layer = 32
+collision_mask = 9
+script = ExtResource("1_pusgp")
+ship_laser_scene = ExtResource("2_so1eu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_vd8gc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dvsqo")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ihn8x")
+volume_db = -25.895
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3bpy3")
+volume_db = -20.331
+
+[node name="LaserStartPosition" type="Marker2D" parent="."]
+position = Vector2(1, 69)
+
+[node name="LaserTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("6_e0sdd")
+volume_db = -27.368
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

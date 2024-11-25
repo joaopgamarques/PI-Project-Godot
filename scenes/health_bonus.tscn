@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx13fqf57plui"]
+
+[ext_resource type="Texture2D" uid="uid://05odshnxtn4q" path="res://graphics/lives/playerLife1_red.png" id="1_6ytvf"]
+[ext_resource type="Script" path="res://scenes/health_bonus.gd" id="1_peclq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6joid"]
+radius = 17.0294
+
+[node name="HealthBonus" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_peclq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ytvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6joid")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

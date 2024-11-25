@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyfa2rlo2n1xf"]
+
+[ext_resource type="Texture2D" uid="uid://bwk37gml0ibxg" path="res://graphics/lasers/laserBlue16.png" id="1_1f85r"]
+[ext_resource type="Script" path="res://scenes/ship_laser.gd" id="1_7wijw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grtxx"]
+radius = 3.0
+height = 58.0
+
+[node name="ShipLaser" type="Area2D"]
+collision_layer = 64
+script = ExtResource("1_7wijw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.384615, 1)
+texture = ExtResource("1_1f85r")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_grtxx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

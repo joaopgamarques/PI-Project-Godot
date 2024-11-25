@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://co5kuciy1he5w"]
+
+[ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_uyixv"]
+[ext_resource type="AudioStream" uid="uid://boy1lml1e28ts" path="res://audio/title_music.wav" id="2_67o82"]
+[ext_resource type="PackedScene" uid="uid://byuujpijehf8v" path="res://scenes/level.tscn" id="2_elxvr"]
+[ext_resource type="FontFile" uid="uid://cmfm0qgcxvouq" path="res://graphics/font/subatomic.tsoonami.ttf" id="3_cov4p"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uyixv")
+level_scene = ExtResource("2_elxvr")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.180392, 0.247059, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cov4p")
+theme_override_font_sizes/font_size = 40
+text = "Meteor Blitz"
+horizontal_alignment = 1
+
+[node name="CourseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cov4p")
+theme_override_font_sizes/font_size = 20
+text = "Information Processing"
+horizontal_alignment = 1
+
+[node name="UniversityLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cov4p")
+theme_override_font_sizes/font_size = 20
+text = "ISCTE University Institute of Lisbon"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.5
+offset_top = -40.0
+offset_right = 175.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="InstructionLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cov4p")
+theme_override_font_sizes/font_size = 20
+text = "Press space to start."
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_67o82")
+volume_db = -20.331
+autoplay = true
