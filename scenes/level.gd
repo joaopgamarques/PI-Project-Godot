@@ -174,7 +174,7 @@ func _on_ship_timeout() -> void:
 	var ship = ship_scene.instantiate()
 	# Randomize the position at the top of the screen.
 	var width = get_viewport().get_visible_rect().size.x
-	ship.position = Vector2(rng.randi_range(50, width - 50), -100)  # Start above the screen.
+	ship.position = Vector2(rng.randi_range(100, width - 100), -100)  # Start above the screen.
 	# Call the discrete distribution method to determine the ship type.
 	var ship_type = Distributions.InverseDiscreteCDF(ship_types, ship_probabilities, rng.randf())
 	print("Generated ship type: ", ship_type) # Print the type of the ship generated.
