@@ -224,5 +224,5 @@ public partial class Distributions : Node
 		// Calculate the inverse CDF for the adjusted probability within the truncated range.
 		return exponentialDistribution.InverseCumulativeDistribution(adjustedProbability);
 	}
-
+	
 }
